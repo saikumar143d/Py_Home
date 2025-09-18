@@ -8,24 +8,332 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .code-block {
+            background-color: #2d2d2d;
+            color: #ccc;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            font-family: 'Fira Code', 'JetBrains Mono', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #ff5f56;
+            border-radius: 50%;
+            box-shadow: 0.75rem 0 0 #ffbd2e, 1.5rem 0 0 #27c93f;
+        }
+        .code-keyword { color: #f92672; }
+        .code-function { color: #66d9ef; }
+        .code-string { color: #e6db74; }
+        .code-comment { color: #75715e; }
+        .code-operator { color: #f8f8f2; }
+        .code-variable { color: #a6e22e; }
+        .code-number { color: #ae81ff; }
+        .code-brackets { color: #f8f8f2; }
+        .menu-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 10;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease-in-out;
+            transform-origin: top right;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .menu-dropdown-content.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .menu-dropdown-content a {
+            color: #4b5563;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        .menu-dropdown-content a:hover {
+            background-color: #f3f4f6;
+        }
+        /* Mermaid specific styles for a compact and cute look */
+        .mermaid {
+            font-family: 'Inter', sans-serif !important;
+        }
+        .mermaid-container {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 p-8 min-h-screen">
     <div class="max-w-4xl mx-auto">
-        <header class="mb-8 border-b-2 border-slate-300 pb-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold">Introduction</h1>
-            <a href="index.html" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">
-                &larr; Back to Home
-            </a>
+        <header class="mb-8 border-b-2 border-slate-300 pb-4 flex justify-between items-center relative">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#007ACC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.95c.34-.15.58-.51.58-.91V6c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v4c0 .4.24.76.58.91l9.42 4.67 9.42-4.63z"/><path d="M22 6v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6"/><path d="m12 15.5 8.7-4.35"/></svg>
+                <h1 class="text-3xl font-bold text-slate-900">Introduction</h1>
+            </div>
+            
+            <div class="relative">
+                <button id="menu-button" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    Menu
+                </button>
+                <div id="menu-dropdown" class="menu-dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="introduction.html">Introduction</a>
+                    <a href="programming-language.html">Programming Language</a>
+                    <a href="variables.html">Variables</a>
+                    <a href="conditional-statements.html">Conditional Statements</a>
+                    <a href="looping.html">Looping</a>
+                    <a href="lists-arrays.html">Lists or Arrays</a>
+                    <a href="tuples.html">Tuples</a>
+                    <a href="sets-dictionaries.html">Sets and Dictionaries</a>
+                    <a href="numpy.html">NumPy Introduction</a>
+                    <a href="pandas.html">Pandas Introduction</a>
+                    <a href="files-reading.html">Files Reading and Cleaning Data</a>
+                    <a href="combined-practice.html">Combined Practice</a>
+                </div>
+            </div>
         </header>
         
         <main>
-            <p class="text-lg text-slate-600">
-                (Content for the Introduction page will go here. Please provide the text in your next prompt.)
-            </p>
+            <h2 class="text-2xl font-bold mb-6">Programming Fundamentals in Python</h2>
+            
+            <!-- Introduction Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">1. Introduction</h3>
+                <p class="text-slate-600 mb-4">Programming is the process of <strong>giving step-by-step instructions to a computer</strong> to perform a task.</p>
+                <p class="text-slate-600 mb-4">Python is one of the most popular programming languages today, known for its <strong>simplicity, readability, and versatility</strong>.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Why Python?</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li><strong>High-level:</strong> You can think in human terms, not in binary or memory registers.</li>
+                    <li><strong>Interpreted:</strong> No compilation step needed; Python executes code line by line.</li>
+                    <li><strong>Cross-platform:</strong> Works on Windows, macOS, Linux, even in mobile/web apps.</li>
+                    <li><strong>Versatile:</strong> Useful in automation, data science, artificial intelligence, web development, and more.</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Example:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Welcome to Python Programming"</span><span class="code-brackets">)</span></code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">Welcome to Python Programming</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+            
+            <!-- Analogies and Examples Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">2. Analogies and Examples</h3>
+                <p class="text-slate-600 mb-4">Learning programming can be simplified through <strong>real-world analogies</strong>.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Analogy (Recipe):</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li>Recipe steps &rarr; Program instructions</li>
+                    <li>Ingredients &rarr; Input data</li>
+                    <li>Final dish &rarr; Program output</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Example (Tea Recipe &rarr; Python Code):</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">make_tea</span><span class="code-brackets">(</span><span class="code-variable">water</span><span class="code-operator">,</span> <span class="code-variable">tea_leaves</span><span class="code-operator">,</span> <span class="code-variable">milk</span><span class="code-operator">,</span> <span class="code-variable">sugar</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-keyword">return</span> <span class="code-function">f</span><span class="code-string">"Tea ready with <span class="code-brackets">{</span><span class="code-variable">water</span><span class="code-brackets">}</span>ml water, <span class="code-brackets">{</span><span class="code-variable">tea_leaves</span><span class="code-brackets">}</span> spoons of tea, <span class="code-brackets">{</span><span class="code-variable">milk</span><span class="code-brackets">}</span>ml milk, and <span class="code-brackets">{</span><span class="code-variable">sugar</span><span class="code-brackets">}</span> spoons of sugar."</span>
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">make_tea</span><span class="code-brackets">(</span><span class="code-number">200</span><span class="code-operator">,</span> <span class="code-number">2</span><span class="code-operator">,</span> <span class="code-number">50</span><span class="code-operator">,</span> <span class="code-number">1</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">Tea ready with 200ml water, 2 spoons of tea, 50ml milk, and 1 spoons of sugar.</p>
+                </div>
+                <p class="text-slate-600 mt-4">Just like customizing a recipe, in programming, you pass inputs (parameters) to functions to change the result.</p>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Compilation and Runtime Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">3. Compilation and Runtime Terms</h3>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Compilation</h4>
+                <p class="text-slate-600 mb-2">Some languages (C, Java) require code to be <strong>compiled</strong> (converted into machine code) before running. Compilation checks for all errors first and then creates a machine code executable.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Runtime</h4>
+                <p class="text-slate-600 mb-2">Runtime is when the program is <strong>actually running</strong> on the computer. Errors at runtime are called <strong>runtime errors</strong> (e.g., dividing by zero).</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Python’s Execution Model</h4>
+                <p class="text-slate-600 mb-4">Python uses an <strong>interpreter</strong> instead of a compiler. The interpreter executes code <strong>line by line</strong>, making it easier to debug but slower than compiled languages.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Example</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Hello World"</span><span class="code-brackets">)</span></code></pre>
+                    <p class="text-sm text-slate-400 mt-2">At <strong>runtime</strong>, Python executes this line and prints the message.</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Functions Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">4. Functions</h3>
+                <p class="text-slate-600 mb-4">A <strong>function</strong> is a reusable block of code that performs a specific task.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Key Points:</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li>Helps avoid repetition.</li>
+                    <li>Makes programs modular (divided into small parts).</li>
+                    <li>Accepts input (parameters) and may return output (result).</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Analogy:</h4>
+                <p class="text-slate-600 mb-2">A <strong>vending machine:</strong></p>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li>Input = Coins (parameters)</li>
+                    <li>Processing = Select drink/snack</li>
+                    <li>Output = Snack (return value)</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Syntax:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">function_name</span><span class="code-brackets">(</span><span class="code-variable">parameters</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-comment"># code block</span>
+    <span class="code-keyword">return</span> <span class="code-variable">result</span></code></pre>
+                </div>
+                <h4 class="text-lg font-bold mb-2 text-blue-600 mt-4">Example:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">greet</span><span class="code-brackets">(</span><span class="code-variable">name</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-keyword">return</span> <span class="code-string">"Hello, "</span> <span class="code-operator">+</span> <span class="code-variable">name</span>
+
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">greet</span><span class="code-brackets">(</span><span class="code-string">"Saikumar"</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">Hello, Saikumar</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Input Parameters Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">5. Input Parameters</h3>
+                <p class="text-slate-600 mb-4"><strong>Parameters</strong> are values you pass into a function so it can use them in its operation.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Analogy:</h4>
+                <p class="text-slate-600 mb-2">A <strong>blender</strong> needs fruits, milk, and sugar as inputs. Without them, it can’t make juice.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Syntax:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">function_name</span><span class="code-brackets">(</span><span class="code-variable">param1</span><span class="code-operator">,</span> <span class="code-variable">param2</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-comment"># use the parameters</span>
+    <span class="code-keyword">return</span> <span class="code-variable">something</span></code></pre>
+                </div>
+                <h4 class="text-lg font-bold mb-2 text-blue-600 mt-4">Example:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">add_numbers</span><span class="code-brackets">(</span><span class="code-variable">a</span><span class="code-operator">,</span> <span class="code-variable">b</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-keyword">return</span> <span class="code-variable">a</span> <span class="code-operator">+</span> <span class="code-variable">b</span>
+
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">add_numbers</span><span class="code-brackets">(</span><span class="code-number">5</span><span class="code-operator">,</span> <span class="code-number">10</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">15</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Return Statement Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">6. Return Statement</h3>
+                <p class="text-slate-600 mb-4">The <strong>return</strong> statement is used to <strong>send a value back</strong> from a function to the caller.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Key Notes:</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li>Once <code>return</code> executes, the function ends immediately.</li>
+                    <li>A function without <code>return</code> returns <code>None</code> by default.</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Syntax:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">function_name</span><span class="code-brackets">()</span><span class="code-operator">:</span>
+    <span class="code-keyword">return</span> <span class="code-variable">value</span></code></pre>
+                </div>
+                <h4 class="text-lg font-bold mb-2 text-blue-600 mt-4">Example:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">square</span><span class="code-brackets">(</span><span class="code-variable">n</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-keyword">return</span> <span class="code-variable">n</span> <span class="code-operator">*</span> <span class="code-variable">n</span>
+
+<span class="code-variable">result</span> <span class="code-operator">=</span> <span class="code-function">square</span><span class="code-brackets">(</span><span class="code-number">4</span><span class="code-brackets">)</span>
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-variable">result</span><span class="code-brackets">)</span></code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">16</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+            
+            <!-- Print Statement Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">7. Print Statement</h3>
+                <p class="text-slate-600 mb-4">The <strong>print()</strong> function is used to display output on the screen.</p>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Difference Between <code>print()</code> and <code>return</code>:</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li><code>print()</code> &rarr; Shows result on screen.</li>
+                    <li><code>return</code> &rarr; Sends result back to be stored/used later.</li>
+                </ul>
+                <h4 class="text-lg font-bold mb-2 text-blue-600">Syntax:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-function">print</span><span class="code-brackets">(</span><span class="code-variable">value</span><span class="code-brackets">)</span></code></pre>
+                </div>
+                <h4 class="text-lg font-bold mb-2 text-blue-600 mt-4">Example:</h4>
+                <div class="code-block">
+                    <pre><code><span class="code-keyword">def</span> <span class="code-function">example</span><span class="code-brackets">()</span><span class="code-operator">:</span>
+    <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"This just shows text"</span><span class="code-brackets">)</span>
+    <span class="code-keyword">return</span> <span class="code-string">"This sends value back"</span>
+
+<span class="code-variable">x</span> <span class="code-operator">=</span> <span class="code-function">example</span><span class="code-brackets">()</span>
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Returned value:"</span><span class="code-operator">,</span> <span class="code-variable">x</span><span class="code-brackets">)</code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">This just shows text<br>Returned value: This sends value back</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Full Example Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">Full Example Combining All Concepts</h3>
+                <p class="text-slate-600 mb-4">A complete program combining function, parameters, return, and print.</p>
+                <div class="code-block">
+                    <pre><code><span class="code-comment"># Define function with parameters, return, and print</span>
+<span class="code-keyword">def</span> <span class="code-function">calculate_area</span><span class="code-brackets">(</span><span class="code-variable">length</span><span class="code-operator">,</span> <span class="code-variable">width</span><span class="code-brackets">)</span><span class="code-operator">:</span>
+    <span class="code-variable">area</span> <span class="code-operator">=</span> <span class="code-variable">length</span> <span class="code-operator">*</span> <span class="code-variable">width</span>
+    <span class="code-keyword">return</span> <span class="code-variable">area</span>   <span class="code-comment"># returning result</span>
+
+<span class="code-comment"># Inputs</span>
+<span class="code-variable">length</span> <span class="code-operator">=</span> <span class="code-number">5</span>
+<span class="code-variable">width</span> <span class="code-operator">=</span> <span class="code-number">3</span>
+
+<span class="code-comment"># Call function</span>
+<span class="code-variable">result</span> <span class="code-operator">=</span> <span class="code-function">calculate_area</span><span class="code-brackets">(</span><span class="code-variable">length</span><span class="code-operator">,</span> <span class="code-variable">width</span><span class="code-brackets">)</span>
+
+<span class="code-comment"># Print output</span>
+<span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"The area of rectangle is:"</span><span class="code-operator">,</span> <span class="code-variable">result</span><span class="code-brackets">)</code></pre>
+                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-mono text-sm text-slate-300">The area of rectangle is: 15</p>
+                </div>
+                <hr class="my-6 border-slate-300">
+            </div>
+
+            <!-- Key Takeaways Card -->
+            <div class="bg-white rounded-2xl p-6 mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-xl font-semibold mb-2">Key Takeaways</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-600">
+                    <li>Python is <strong>interpreted, simple, versatile</strong>.</li>
+                    <li>Functions help write <strong>reusable, modular code</strong>.</li>
+                    <li><strong>Parameters</strong> customize function behavior.</li>
+                    <li><strong>return</strong> sends back results; <strong>print()</strong> displays them.</li>
+                    <li>Programs are like <strong>recipes</strong> &ndash; steps, inputs, and final output.</li>
+                </ul>
+            </div>
         </main>
     </div>
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const menuDropdown = document.getElementById('menu-dropdown');
+        menuButton.addEventListener('click', () => {
+            menuDropdown.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
