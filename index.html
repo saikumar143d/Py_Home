@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Home</title>
+    <!-- Use the Inter font for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts Icons from CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .module-card {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .module-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            transition: transform 0.3s ease-in-out;
+            color: #4f46e5;
+        }
+        
+        /* Gradient for the header text with a more dynamic animation */
+        .gradient-text {
+            background: linear-gradient(45deg, #4f46e5, #c026d3, #ef4444, #4f46e5);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: moveGradient 10s ease infinite;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Main container with responsive padding and centering -->
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-8 lg:p-12">
+
+        <!-- Header Section -->
+        <header class="text-center mb-10 w-full max-w-5xl">
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-4">
+                <!-- Python logo using the PNG URL -->
+                <img src="https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png" alt="Python Logo" class="w-16 h-16">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold gradient-text leading-tight">
+                    Python Home
+                </h1>
+            </div>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+                Discover the world of Python programming with our structured, interactive learning path.
+            </p>
+        </header>
+
+        <!-- Content Grid with responsive layout -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-6xl">
+
+            <!-- Card 1: Introduction -->
+            <a href="introduction.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-indigo-500">
+                    school
+                </span>
+                <h2 class="text-lg font-bold mt-2">Introduction</h2>
+            </a>
+
+            <!-- Card 2: Programming Language -->
+            <a href="programming-language.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-fuchsia-500">
+                    code
+                </span>
+                <h2 class="text-lg font-bold mt-2">Programming Language</h2>
+            </a>
+
+            <!-- Card 3: Variables -->
+            <a href="variables.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-rose-500">
+                    all_inbox
+                </span>
+                <h2 class="text-lg font-bold mt-2">Variables</h2>
+            </a>
+
+            <!-- Card 4: Conditional Statements -->
+            <a href="conditional-statements.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-emerald-500">
+                    fork_right
+                </span>
+                <h2 class="text-lg font-bold mt-2">Conditional Statements</h2>
+            </a>
+
+            <!-- Card 5: Looping -->
+            <a href="looping.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-amber-500">
+                    cycle
+                </span>
+                <h2 class="text-lg font-bold mt-2">Looping</h2>
+            </a>
+
+            <!-- Card 6: Lists or Arrays -->
+            <a href="lists-arrays.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-blue-500">
+                    list_alt
+                </span>
+                <h2 class="text-lg font-bold mt-2">Lists or Arrays</h2>
+            </a>
+
+            <!-- Card 7: Tuples -->
+            <a href="tuples.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-rose-500">
+                    lock
+                </span>
+                <h2 class="text-lg font-bold mt-2">Tuples</h2>
+            </a>
+
+            <!-- Card 8: Sets and Dictionaries -->
+            <a href="sets-dictionaries.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-purple-500">
+                    key
+                </span>
+                <h2 class="text-lg font-bold mt-2">Sets & Dictionaries</h2>
+            </a>
+
+            <!-- Card 9: NumPy Introduction -->
+            <a href="numpy.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-lime-500">
+                    grid_3x3
+                </span>
+                <h2 class="text-lg font-bold mt-2">NumPy Introduction</h2>
+            </a>
+
+            <!-- Card 10: Pandas Introduction -->
+            <a href="pandas.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-orange-500">
+                    table
+                </span>
+                <h2 class="text-lg font-bold mt-2">Pandas Introduction</h2>
+            </a>
+
+            <!-- Card 11: Files Reading and Cleaning Data -->
+            <a href="files-reading.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-slate-500">
+                    file_upload
+                </span>
+                <h2 class="text-lg font-bold mt-2">File Handling</h2>
+            </a>
+
+            <!-- Card 12: Combined Practice: NumPy and File Reading -->
+            <a href="combined-practice.html" class="block module-card rounded-2xl p-4 text-slate-800 cursor-pointer">
+                <span class="material-symbols-outlined card-icon text-red-500">
+                    electric_bolt
+                </span>
+                <h2 class="text-lg font-bold mt-2">Combined Practice</h2>
+            </a>
+
+        </div>
+    </div>
+</body>
+
+</html>
