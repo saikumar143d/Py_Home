@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -69,38 +70,157 @@
         .menu-dropdown-content a:hover {
             background-color: #f3f4f6;
         }
+        /* Desktop specific styles for full-width layout */
+        @media (min-width: 1024px) {
+            .page-container {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 2rem;
+                padding: 0;
+            }
+            .main-content {
+                padding-top: 2rem;
+                padding-right: 2rem;
+            }
+            .sidebar {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                padding: 1.5rem;
+                transition: width 0.3s ease-in-out;
+                overflow-y: auto;
+                width: 64px; /* Default collapsed width */
+            }
+            .sidebar-link {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.75rem 0.5rem;
+                border-radius: 0.5rem;
+                transition: background-color 0.2s;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .sidebar-link:hover {
+                background-color: #f3f4f6;
+            }
+            .sidebar:hover {
+                width: 250px;
+            }
+            .sidebar:hover .sidebar-text {
+                display: block;
+            }
+            .sidebar-text {
+                display: none;
+            }
+            header {
+                display: none; /* Hide the mobile header */
+            }
+            .sidebar-header {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #e5e7eb;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 p-4 sm:p-8 min-h-screen">
-    <div class="max-w-4xl mx-auto">
-        <header class="mb-6 sm:mb-8 border-b-2 border-slate-300 pb-4 flex justify-between items-center relative">
-            <a href="index.html" class="flex items-center space-x-2 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007ACC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap sm:w-8 sm:h-8"><path d="M21.42 10.95c.34-.15.58-.51.58-.91V6c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v4c0 .4.24.76.58.91l9.42 4.67 9.42-4.63z"/><path d="M22 6v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6"/><path d="m12 15.5 8.7-4.35"/></svg>
-                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">Introduction</h1>
-            </a>
-            
-            <div class="relative">
-                <button id="menu-button" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm sm:text-base">
-                    Menu
-                </button>
-                <div id="menu-dropdown" class="menu-dropdown-content">
-                    <a href="introduction.html">Introduction</a>
-                    <a href="programming-language.html">Programming Language</a>
-                    <a href="variables.html">Variables</a>
-                    <a href="conditional-statements.html">Conditional Statements</a>
-                    <a href="looping.html">Looping</a>
-                    <a href="lists-arrays.html">Lists or Arrays</a>
-                    <a href="tuples.html">Tuples</a>
-                    <a href="sets-dictionaries.html">Sets and Dictionaries</a>
-                    <a href="numpy.html">NumPy Introduction</a>
-                    <a href="pandas.html">Pandas Introduction</a>
-                    <a href="files-reading.html">Files Reading and Cleaning Data</a>
-                    <a href="combined-practice.html">Combined Practice</a>
-                </div>
-            </div>
-        </header>
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Mobile Header -->
+    <header class="lg:hidden bg-slate-100 p-4 border-b-2 border-slate-300 flex justify-between items-center relative">
+        <a href="index.html" class="flex items-center space-x-2 cursor-pointer">
+            <span class="material-icons text-blue-600">school</span>
+            <h1 class="text-2xl font-bold text-slate-900">Introduction</h1>
+        </a>
         
-        <main>
+        <div class="relative">
+            <button id="menu-button" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm">
+                Menu
+            </button>
+            <div id="menu-dropdown" class="menu-dropdown-content">
+                <a href="introduction.html">Introduction</a>
+                <a href="programming-language.html">Programming Language</a>
+                <a href="variables.html">Variables</a>
+                <a href="conditional-statements.html">Conditional Statements</a>
+                <a href="looping.html">Looping</a>
+                <a href="lists-arrays.html">Lists or Arrays</a>
+                <a href="tuples.html">Tuples</a>
+                <a href="sets-dictionaries.html">Sets and Dictionaries</a>
+                <a href="numpy.html">NumPy Introduction</a>
+                <a href="pandas.html">Pandas Introduction</a>
+                <a href="files-reading.html">Files Reading and Cleaning Data</a>
+                <a href="combined-practice.html">Combined Practice</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Sidebar for larger screens -->
+        <aside class="sidebar hidden lg:block">
+            <div class="sidebar-header">
+                <a href="index.html" class="flex items-center gap-2">
+                    <span class="material-icons text-blue-600 text-3xl">school</span>
+                    <h1 class="text-2xl font-bold text-slate-900 sidebar-text">Introduction</h1>
+                </a>
+            </div>
+            <nav class="space-y-2">
+                <a href="introduction.html" class="sidebar-link font-semibold text-blue-600">
+                    <span class="material-icons">school</span>
+                    <span class="sidebar-text">Introduction</span>
+                </a>
+                <a href="programming-language.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">code</span>
+                    <span class="sidebar-text">Programming Language</span>
+                </a>
+                <a href="variables.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">data_object</span>
+                    <span class="sidebar-text">Variables</span>
+                </a>
+                <a href="conditional-statements.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">call_split</span>
+                    <span class="sidebar-text">Conditional Statements</span>
+                </a>
+                <a href="looping.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">autorenew</span>
+                    <span class="sidebar-text">Looping</span>
+                </a>
+                <a href="lists-arrays.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">list</span>
+                    <span class="sidebar-text">Lists or Arrays</span>
+                </a>
+                <a href="tuples.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">widgets</span>
+                    <span class="sidebar-text">Tuples</span>
+                </a>
+                <a href="sets-dictionaries.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">dns</span>
+                    <span class="sidebar-text">Sets and Dictionaries</span>
+                </a>
+                <a href="numpy.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">calculate</span>
+                    <span class="sidebar-text">NumPy Introduction</span>
+                </a>
+                <a href="pandas.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">grid_on</span>
+                    <span class="sidebar-text">Pandas Introduction</span>
+                </a>
+                <a href="files-reading.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">description</span>
+                    <span class="sidebar-text">Files Reading</span>
+                </a>
+                <a href="combined-practice.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                    <span class="material-icons">extension</span>
+                    <span class="sidebar-text">Combined Practice</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content p-4 sm:p-8">
             <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Programming Fundamentals in Python</h2>
             
             <!-- Introduction Card -->
