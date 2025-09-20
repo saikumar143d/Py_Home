@@ -92,6 +92,9 @@
                 transition: width 0.3s ease-in-out;
                 overflow-y: auto;
                 width: 64px; /* Default collapsed width */
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
             }
             .sidebar-link {
                 display: flex;
@@ -102,6 +105,8 @@
                 transition: background-color 0.2s;
                 white-space: nowrap;
                 overflow: hidden;
+                width: 100%;
+                justify-content: flex-start;
             }
             .sidebar-link:hover {
                 background-color: #f3f4f6;
@@ -161,7 +166,7 @@
 
     <div class="page-container">
         <!-- Sidebar for larger screens -->
-        <aside class="sidebar hidden lg:block">
+        <aside class="sidebar hidden lg:flex">
             <div class="sidebar-header">
                 <a href="index.html" class="flex items-center gap-2">
                     <span class="material-icons text-blue-600 text-3xl">school</span>
