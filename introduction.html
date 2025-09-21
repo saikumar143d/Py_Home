@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -155,7 +155,7 @@
             .sidebar-links::-webkit-scrollbar {
                 display: none;
             }
-            .sidebar-link .material-icons {
+            .sidebar-link .material-symbols-outlined {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -169,7 +169,7 @@
     <!-- Mobile Header -->
     <header class="lg:hidden bg-slate-100 p-4 border-b-2 border-slate-300 flex justify-between items-center relative">
         <a href="index.html" class="flex items-center space-x-2 cursor-pointer">
-            <span class="material-icons text-blue-600">school</span>
+            <span class="material-symbols-outlined text-blue-600">school</span>
             <h1 class="text-2xl font-bold text-slate-900">Introduction</h1>
         </a>
         
@@ -199,65 +199,65 @@
         <aside class="sidebar hidden lg:flex" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="flex items-center gap-2">
-                    <span class="material-icons text-blue-600 text-3xl">school</span>
+                    <span class="material-symbols-outlined text-blue-600 text-3xl">school</span>
                     <h1 class="text-2xl font-bold text-slate-900 sidebar-text">PyHome</h1>
                 </a>
             </div>
             <div class="sidebar-links">
                 <nav class="space-y-2">
                     <a href="introduction.html" class="sidebar-link font-semibold text-blue-600 group">
-                        <span class="material-icons sidebar-icon text-blue-600">school</span>
+                        <span class="material-symbols-outlined sidebar-icon text-blue-600">school</span>
                         <span class="sidebar-text">Introduction</span>
                     </a>
                     <a href="programming-language.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">code</span>
+                        <span class="material-symbols-outlined sidebar-icon">code</span>
                         <span class="sidebar-text">Programming Language</span>
                     </a>
                     <a href="variables.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">data_object</span>
+                        <span class="material-symbols-outlined sidebar-icon">data_object</span>
                         <span class="sidebar-text">Variables</span>
                     </a>
                     <a href="conditional-statements.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">call_split</span>
+                        <span class="material-symbols-outlined sidebar-icon">call_split</span>
                         <span class="sidebar-text">Conditional Statements</span>
                     </a>
                     <a href="looping.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">autorenew</span>
+                        <span class="material-symbols-outlined sidebar-icon">autorenew</span>
                         <span class="sidebar-text">Looping</span>
                     </a>
                     <a href="lists-arrays.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">list</span>
+                        <span class="material-symbols-outlined sidebar-icon">list</span>
                         <span class="sidebar-text">Lists or Arrays</span>
                     </a>
                     <a href="tuples.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">widgets</span>
+                        <span class="material-symbols-outlined sidebar-icon">widgets</span>
                         <span class="sidebar-text">Tuples</span>
                     </a>
                     <a href="sets-dictionaries.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">dns</span>
+                        <span class="material-symbols-outlined sidebar-icon">dns</span>
                         <span class="sidebar-text">Sets and Dictionaries</span>
                     </a>
                     <a href="numpy.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">calculate</span>
+                        <span class="material-symbols-outlined sidebar-icon">calculate</span>
                         <span class="sidebar-text">NumPy Introduction</span>
                     </a>
                     <a href="pandas.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">grid_on</span>
+                        <span class="material-symbols-outlined sidebar-icon">grid_on</span>
                         <span class="sidebar-text">Pandas Introduction</span>
                     </a>
                     <a href="files-reading.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">description</span>
+                        <span class="material-symbols-outlined sidebar-icon">description</span>
                         <span class="sidebar-text">Files Reading</span>
                     </a>
                     <a href="combined-practice.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
-                        <span class="material-icons sidebar-icon">extension</span>
+                        <span class="material-symbols-outlined sidebar-icon">extension</span>
                         <span class="sidebar-text">Combined Practice</span>
                     </a>
                 </nav>
             </div>
             <div class="mt-auto pt-4 border-t border-slate-300">
                 <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="false" aria-label="Toggle sidebar">
-                    <span class="material-icons text-slate-600 transition-transform duration-300">keyboard_tab</span>
+                    <span class="material-symbols-outlined text-slate-600 transition-transform duration-300">switch_access_3</span>
                 </button>
             </div>
         </aside>
@@ -410,7 +410,7 @@
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
-            
+
             <!-- Print Statement Card -->
             <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-lg border border-slate-200">
                 <h3 class="text-lg sm:text-xl font-semibold mb-2">7. Print Statement</h3>
@@ -486,6 +486,8 @@
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebar-toggle');
         const mainContent = document.getElementById('main-content');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const toggleIcon = sidebarToggle.querySelector('.material-symbols-outlined');
 
         // Initial check for screen size
         if (window.innerWidth >= 1024) {
@@ -493,11 +495,14 @@
         }
 
         sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('sidebar-expanded');
-            if (sidebar.classList.contains('sidebar-expanded')) {
+            const isExpanded = sidebar.classList.toggle('sidebar-expanded');
+            
+            if (isExpanded) {
                 mainContent.style.marginLeft = '250px';
+                toggleIcon.textContent = 'keyboard_tab_rtl';
             } else {
                 mainContent.style.marginLeft = '64px';
+                toggleIcon.textContent = 'switch_access_3';
             }
         });
 
@@ -511,6 +516,22 @@
                     mainContent.style.marginLeft = '64px';
                 }
             }
+        });
+
+        sidebarLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const icon = link.querySelector('.sidebar-icon');
+                if (icon) {
+                    icon.style.color = '#2563eb';
+                }
+            });
+
+            link.addEventListener('mouseleave', () => {
+                const icon = link.querySelector('.sidebar-icon');
+                if (icon) {
+                    icon.style.color = ''; // Revert to default
+                }
+            });
         });
     </script>
 </body>
