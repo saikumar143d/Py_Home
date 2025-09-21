@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programming Language</title>
+    <link rel="icon" type="image/png" href="https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -73,7 +74,7 @@
                 padding-right: 2rem;
                 flex-grow: 1;
                 transition: margin-left 0.4s ease-in-out;
-                margin-left: 64px;
+                margin-left: 250px;
             }
             .sidebar {
                 position: fixed;
@@ -85,7 +86,7 @@
                 padding: 1.5rem 0.5rem;
                 transition: width 0.4s ease-in-out;
                 overflow-y: auto;
-                width: 64px;
+                width: 250px;
                 display: flex;
                 flex-direction: column;
                 z-index: 20;
@@ -115,14 +116,15 @@
                 padding-bottom: 1rem;
                 border-bottom: 1px solid #e5e7eb;
                 margin-bottom: 1rem;
-                justify-content: center;
+                justify-content: flex-start;
             }
             .sidebar-toggle {
                 display: flex;
                 justify-content: center;
                 width: 100%;
                 margin-top: auto;
-                margin-bottom: 1rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid #e5e7eb;
                 cursor: pointer;
             }
             .sidebar-toggle-icon {
@@ -143,7 +145,7 @@
                 display: block;
             }
             .sidebar-text {
-                display: none;
+                display: block;
             }
             .sidebar-links {
                 overflow-y: auto;
@@ -161,6 +163,24 @@
                 align-items: center;
                 width: 32px;
             }
+            .sidebar.collapsed .sidebar-header {
+                justify-content: center;
+            }
+            .sidebar.collapsed .sidebar-header h1 {
+                display: none;
+            }
+            .sidebar.collapsed .sidebar-header .material-symbols-outlined {
+                margin-right: 0;
+            }
+            .sidebar.collapsed {
+                width: 64px;
+            }
+            .sidebar.collapsed ~ .main-content {
+                margin-left: 64px;
+            }
+            .sidebar.collapsed .sidebar-text {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -169,7 +189,7 @@
     <!-- Mobile Header -->
     <header class="lg:hidden bg-slate-100 p-4 border-b-2 border-slate-300 flex justify-between items-center relative">
         <a href="index.html" class="flex items-center space-x-2 cursor-pointer">
-            <span class="material-symbols-outlined text-blue-600">code</span>
+            <span class="material-symbols-outlined text-blue-600">school</span>
             <h1 class="text-2xl font-bold text-slate-900">Programming Language</h1>
         </a>
         
@@ -191,15 +211,15 @@
                 <a href="files-reading.html">Files Reading and Cleaning Data</a>
                 <a href="combined-practice.html">Combined Practice</a>
             </div>
-        </div>
+            </div>
     </header>
 
     <div class="page-container">
         <!-- Sidebar for larger screens -->
-        <aside class="sidebar hidden lg:flex" id="sidebar">
+        <aside class="sidebar hidden lg:flex sidebar-expanded" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-blue-600 text-3xl">school</span>
+                    <img src="https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png" alt="Python Logo" class="h-8 w-8">
                     <h1 class="text-2xl font-bold text-slate-900 sidebar-text">PyHome</h1>
                 </a>
             </div>
@@ -210,7 +230,7 @@
                         <span class="sidebar-text">Introduction</span>
                     </a>
                     <a href="programming-language.html" class="sidebar-link font-semibold text-blue-600 group">
-                        <span class="material-symbols-outlined sidebar-icon text-blue-600">code</span>
+                        <span class="material-symbols-outlined sidebar-icon">code</span>
                         <span class="sidebar-text">Programming Language</span>
                     </a>
                     <a href="variables.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
@@ -256,16 +276,62 @@
                 </nav>
             </div>
             <div class="mt-auto pt-4 border-t border-slate-300">
-                <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="false" aria-label="Toggle sidebar">
+                <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="true" aria-label="Toggle sidebar">
                     <span class="material-symbols-outlined text-slate-600 transition-transform duration-300">flip</span>
                 </button>
             </div>
         </aside>
 
         <main class="main-content p-4 sm:p-8" id="main-content">
-            <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Programming Language</h2>
+            <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Programming Languages in Python</h2>
+            
+            <!-- Programming Language -->
             <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-lg border border-slate-200">
-                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">Content for Programming Language</p>
+                <h3 class="text-lg sm:text-xl font-semibold mb-2">1. Programming Languages</h3>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">A programming language is a set of commands and syntax used to write computer programs. There are many different types, each with its own strengths and weaknesses.</p>
+                <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Types of Programming Languages</h4>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600 text-sm sm:text-base">
+                    <li><strong>Low-Level Languages:</strong> Machine-specific and close to computer hardware. Examples include Assembly and Machine Code.</li>
+                    <li><strong>High-Level Languages:</strong> More abstract, human-readable, and easier to use. Examples include Python, Java, and C++.</li>
+                    <li><strong>Interpreted Languages:</strong> Code is executed line by line by an interpreter (e.g., Python, JavaScript).</li>
+                    <li><strong>Compiled Languages:</strong> Code is converted to machine code by a compiler before execution (e.g., C, C++).</li>
+                </ul>
+                <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Why Python?</h4>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">Python is a high-level, interpreted language that is great for beginners and professionals alike. Its simple syntax and extensive libraries make it suitable for a wide range of applications.</p>
+                <hr class="my-4 sm:my-6 border-slate-300">
+            </div>
+
+            <!-- Python Environment Setup -->
+            <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2">2. Python Environment Setup</h3>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">Before you can start coding, you need to set up your Python environment. This includes installing Python and a code editor.</p>
+                <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Step 1: Install Python</h4>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">Visit the official Python website (<a href="https://www.python.org/" class="text-blue-600 hover:underline">www.python.org</a>) and download the latest version for your operating system.</p>
+                <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Step 2: Choose a Code Editor (IDE)</h4>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">An Integrated Development Environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development. Some popular choices include:</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600 text-sm sm:text-base">
+                    <li><strong>VS Code:</strong> Lightweight, fast, and highly customizable. Great for beginners.</li>
+                    <li><strong>PyCharm:</strong> A powerful and feature-rich IDE specifically for Python.</li>
+                    <li><strong>Jupyter Notebook:</strong> Perfect for data science and analysis.</li>
+                </ul>
+                <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Step 3: Verify Installation</h4>
+                <p class="text-slate-600 mb-2 sm:mb-4 text-sm sm:text-base">Open your terminal or command prompt and type the following command to verify that Python is installed correctly:</p>
+                <div class="code-block text-xs sm:text-sm">
+                    <pre><code><span class="code-function">python</span> <span class="code-operator">--</span><span class="code-variable">version</span></code></pre>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">Python 3.10.4</p>
+                </div>
+                <hr class="my-4 sm:my-6 border-slate-300">
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-lg border border-slate-200">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2">Key Takeaways</h3>
+                <ul class="list-disc list-inside space-y-1 text-slate-600 text-sm sm:text-base">
+                    <li>Programming languages are instructions for computers.</li>
+                    <li>Python is a high-level, interpreted language.</li>
+                    <li>Python environment setup involves installing Python and choosing a code editor.</li>
+                </ul>
             </div>
         </main>
     </div>
@@ -282,15 +348,16 @@
         const sidebarLinks = document.querySelectorAll('.sidebar-link');
         const toggleIcon = sidebarToggle.querySelector('.material-symbols-outlined');
 
-        // Initial check for screen size
+        // Initial state
         if (window.innerWidth >= 1024) {
-            mainContent.style.marginLeft = '64px';
+            sidebar.classList.add('sidebar-expanded');
+            mainContent.style.marginLeft = '250px';
         }
 
         sidebarToggle.addEventListener('click', () => {
-            const isExpanded = sidebar.classList.toggle('sidebar-expanded');
+            const isCollapsed = sidebar.classList.toggle('collapsed');
             
-            if (isExpanded) {
+            if (!isCollapsed) {
                 mainContent.style.marginLeft = '250px';
                 toggleIcon.textContent = 'keyboard_tab_rtl';
             } else {
@@ -302,26 +369,31 @@
         // Optional: Keep the state consistent on window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth < 1024) {
+                sidebar.classList.remove('collapsed');
                 sidebar.classList.remove('sidebar-expanded');
                 mainContent.style.marginLeft = '0';
             } else {
-                if (!sidebar.classList.contains('sidebar-expanded')) {
+                if (sidebar.classList.contains('collapsed')) {
                     mainContent.style.marginLeft = '64px';
+                } else {
+                    mainContent.style.marginLeft = '250px';
                 }
             }
         });
 
         sidebarLinks.forEach(link => {
             link.addEventListener('mouseenter', () => {
-                const icon = link.querySelector('.sidebar-icon');
-                if (icon) {
+                const icon = link.querySelector('.material-symbols-outlined');
+                const isSelected = link.classList.contains('text-blue-600');
+                if (icon && !isSelected) {
                     icon.style.color = '#2563eb';
                 }
             });
 
             link.addEventListener('mouseleave', () => {
-                const icon = link.querySelector('.sidebar-icon');
-                if (icon) {
+                const icon = link.querySelector('.material-symbols-outlined');
+                const isSelected = link.classList.contains('text-blue-600');
+                if (icon && !isSelected) {
                     icon.style.color = ''; // Revert to default
                 }
             });
