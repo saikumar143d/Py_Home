@@ -12,33 +12,24 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .code-block {
-            background-color: #2d2d2d;
-            color: #ccc;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
             padding: 1rem;
             border-radius: 0.75rem;
             font-family: 'Fira Code', 'JetBrains Mono', monospace;
             overflow-x: auto;
             position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #333;
         }
-        .code-block::before {
-            content: '';
-            position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
-            width: 0.5rem;
-            height: 0.5rem;
-            background-color: #ff5f56;
-            border-radius: 50%;
-            box-shadow: 0.75rem 0 0 #ffbd2e, 1.5rem 0 0 #27c93f;
-        }
-        .code-keyword { color: #f92672; }
-        .code-function { color: #66d9ef; }
-        .code-string { color: #e6db74; }
-        .code-comment { color: #75715e; }
-        .code-operator { color: #f8f8f2; }
-        .code-variable { color: #a6e22e; }
-        .code-number { color: #ae81ff; }
-        .code-brackets { color: #f8f8f2; }
+        .code-keyword { color: #569cd6; }
+        .code-function { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+        .code-comment { color: #6a9955; }
+        .code-operator { color: #d4d4d4; }
+        .code-variable { color: #9cdcfe; }
+        .code-number { color: #b5cea8; }
+        .code-brackets { color: #d4d4d4; }
         .menu-dropdown-content {
             display: none;
             position: absolute;
@@ -252,7 +243,7 @@
                 <div class="code-block text-xs sm:text-sm">
                     <pre><code><span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Welcome to Python Programming"</span><span class="code-brackets">)</span></code></pre>
                     <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">Welcome to Python Programming</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">Welcome to Python Programming</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -273,7 +264,7 @@
     <span class="code-keyword">return</span> <span class="code-function">f</span><span class="code-string">"Tea ready with <span class="code-brackets">{</span><span class="code-variable">water</span><span class="code-brackets">}</span>ml water, <span class="code-brackets">{</span><span class="code-variable">tea_leaves</span><span class="code-brackets">}</span> spoons of tea, <span class="code-brackets">{</span><span class="code-variable">milk</span><span class="code-brackets">}</span>ml milk, and <span class="code-brackets">{</span><span class="code-variable">sugar</span><span class="code-brackets">}</span> spoons of sugar."</span>
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">make_tea</span><span class="code-brackets">(</span><span class="code-number">200</span><span class="code-operator">,</span> <span class="code-number">2</span><span class="code-operator">,</span> <span class="code-number">50</span><span class="code-operator">,</span> <span class="code-number">1</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
                     <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">Tea ready with 200ml water, 2 spoons of tea, 50ml milk, and 1 spoons of sugar.</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">Tea ready with 200ml water, 2 spoons of tea, 50ml milk, and 1 spoons of sugar.</p>
                 </div>
                 <p class="text-slate-600 mt-2 sm:mt-4 text-sm sm:text-base">Just like customizing a recipe, in programming, you pass inputs (parameters) to functions to change the result.</p>
                 <hr class="my-4 sm:my-6 border-slate-300">
@@ -291,7 +282,7 @@
                 <h4 class="text-base sm:text-lg font-bold mb-2 text-blue-600">Example</h4>
                 <div class="code-block text-xs sm:text-sm">
                     <pre><code><span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Hello World"</span><span class="code-brackets">)</span></code></pre>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-2">At <strong>runtime</strong>, Python executes this line and prints the message.</p>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-2">At <strong>runtime</strong>, Python executes this line and prints the message.</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -325,8 +316,8 @@
     <span class="code-keyword">return</span> <span class="code-string">"Hello, "</span> <span class="code-operator">+</span> <span class="code-variable">name</span>
 
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">greet</span><span class="code-brackets">(</span><span class="code-string">"Saikumar"</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">Hello, Saikumar</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">Hello, Saikumar</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -349,8 +340,8 @@
     <span class="code-keyword">return</span> <span class="code-variable">a</span> <span class="code-operator">+</span> <span class="code-variable">b</span>
 
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">add_numbers</span><span class="code-brackets">(</span><span class="code-number">5</span><span class="code-operator">,</span> <span class="code-number">10</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">15</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">15</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -376,8 +367,8 @@
 
 <span class="code-variable">result</span> <span class="code-operator">=</span> <span class="code-function">square</span><span class="code-brackets">(</span><span class="code-number">4</span><span class="code-brackets">)</span>
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-variable">result</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">16</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">16</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -403,8 +394,8 @@
 
 <span class="code-variable">x</span> <span class="code-operator">=</span> <span class="code-function">example</span><span class="code-brackets">()</span>
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"Returned value:"</span><span class="code-operator">,</span> <span class="code-variable">x</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">This just shows text<br>Returned value: This sends value back</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">This just shows text<br>Returned value: This sends value back</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
@@ -428,8 +419,8 @@
 
 <span class="code-comment"># Print output</span>
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-string">"The area of rectangle is:"</span><span class="code-operator">,</span> <span class="code-variable">result</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
-                    <p class="font-mono text-xs sm:text-sm text-slate-300">The area of rectangle is: 15</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
+                    <p class="font-mono text-xs sm:text-sm text-slate-500">The area of rectangle is: 15</p>
                 </div>
                 <hr class="my-4 sm:my-6 border-slate-300">
             </div>
