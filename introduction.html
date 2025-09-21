@@ -85,26 +85,29 @@
                 padding: 1.5rem 0.5rem;
                 transition: width 0.3s ease-in-out;
                 overflow-y: auto;
-                width: 64px; /* Default collapsed width */
+                width: 64px;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 z-index: 20;
             }
-            .sidebar:hover {
-                width: 250px;
+            .sidebar-link {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.75rem 0.5rem;
+                border-radius: 0.5rem;
+                transition: background-color 0.2s, color 0.2s;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 100%;
+                justify-content: flex-start;
             }
-            .sidebar:hover ~ .main-content {
-                margin-left: 250px;
-            }
-            .sidebar:hover .sidebar-text {
-                display: block;
-            }
-            .sidebar-text {
-                display: none;
+            .sidebar-link:hover {
+                background-color: #e5e5e5;
+                color: #2563eb;
             }
             header {
-                display: none; /* Hide the mobile header */
+                display: none;
             }
             .sidebar-header {
                 display: flex;
@@ -118,6 +121,7 @@
                 display: flex;
                 justify-content: center;
                 width: 100%;
+                margin-top: auto;
                 margin-bottom: 1rem;
                 cursor: pointer;
             }
@@ -138,21 +142,8 @@
             .sidebar-expanded .sidebar-text {
                 display: block;
             }
-            .sidebar-link {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                padding: 0.75rem 0.5rem;
-                border-radius: 0.5rem;
-                transition: background-color 0.2s, color 0.2s;
-                white-space: nowrap;
-                overflow: hidden;
-                width: 100%;
-                justify-content: flex-start;
-            }
-            .sidebar-link:hover {
-                background-color: #e5e5e5;
-                color: #2563eb;
+            .sidebar-text {
+                display: none;
             }
             .sidebar-links {
                 overflow-y: auto;
@@ -258,9 +249,9 @@
                     </a>
                 </nav>
             </div>
-            <div class="sidebar-toggle" id="sidebar-toggle">
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-expanded="false">
                 <span class="material-icons sidebar-toggle-icon">chevron_left</span>
-            </div>
+            </button>
         </aside>
 
         <main class="main-content p-4 sm:p-8" id="main-content">
@@ -488,13 +479,29 @@
         const sidebarToggle = document.getElementById('sidebar-toggle');
         const mainContent = document.getElementById('main-content');
 
+        // Initial check for screen size
+        if (window.innerWidth >= 1024) {
+            mainContent.style.marginLeft = '64px';
+        }
+
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('sidebar-expanded');
-            sidebarToggle.classList.toggle('sidebar-expanded');
             if (sidebar.classList.contains('sidebar-expanded')) {
                 mainContent.style.marginLeft = '250px';
             } else {
                 mainContent.style.marginLeft = '64px';
+            }
+        });
+
+        // Optional: Keep the state consistent on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth < 1024) {
+                sidebar.classList.remove('sidebar-expanded');
+                mainContent.style.marginLeft = '0';
+            } else {
+                if (!sidebar.classList.contains('sidebar-expanded')) {
+                    mainContent.style.marginLeft = '64px';
+                }
             }
         });
     </script>
