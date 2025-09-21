@@ -104,7 +104,6 @@
             }
             .sidebar-link:hover {
                 background-color: #e5e5e5;
-                color: #2563eb;
             }
             header {
                 display: none;
@@ -116,6 +115,7 @@
                 padding-bottom: 1rem;
                 border-bottom: 1px solid #e5e7eb;
                 margin-bottom: 1rem;
+                justify-content: center;
             }
             .sidebar-toggle {
                 display: flex;
@@ -206,7 +206,7 @@
             <div class="sidebar-links">
                 <nav class="space-y-2">
                     <a href="introduction.html" class="sidebar-link font-semibold text-blue-600 group">
-                        <span class="material-symbols-outlined sidebar-icon text-blue-600">school</span>
+                        <span class="material-symbols-outlined sidebar-icon">school</span>
                         <span class="sidebar-text">Introduction</span>
                     </a>
                     <a href="programming-language.html" class="sidebar-link text-slate-700 hover:text-blue-600 group">
@@ -257,7 +257,7 @@
             </div>
             <div class="mt-auto pt-4 border-t border-slate-300">
                 <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="false" aria-label="Toggle sidebar">
-                    <span class="material-symbols-outlined text-slate-600 transition-transform duration-300">switch_access_3</span>
+                    <span class="material-symbols-outlined text-slate-600 transition-transform duration-300">flip</span>
                 </button>
             </div>
         </aside>
@@ -502,7 +502,7 @@
                 toggleIcon.textContent = 'keyboard_tab_rtl';
             } else {
                 mainContent.style.marginLeft = '64px';
-                toggleIcon.textContent = 'switch_access_3';
+                toggleIcon.textContent = 'flip';
             }
         });
 
