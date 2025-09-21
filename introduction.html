@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction</title>
+    <link rel="icon" type="image/png" href="https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -73,7 +74,7 @@
                 padding-right: 2rem;
                 flex-grow: 1;
                 transition: margin-left 0.4s ease-in-out;
-                margin-left: 64px;
+                margin-left: 250px;
             }
             .sidebar {
                 position: fixed;
@@ -85,7 +86,7 @@
                 padding: 1.5rem 0.5rem;
                 transition: width 0.4s ease-in-out;
                 overflow-y: auto;
-                width: 64px;
+                width: 250px;
                 display: flex;
                 flex-direction: column;
                 z-index: 20;
@@ -115,14 +116,16 @@
                 padding-bottom: 1rem;
                 border-bottom: 1px solid #e5e7eb;
                 margin-bottom: 1rem;
-                justify-content: center;
+                justify-content: flex-start;
             }
             .sidebar-toggle {
                 display: flex;
                 justify-content: center;
                 width: 100%;
                 margin-top: auto;
-                margin-bottom: 1rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid #e5e7eb;
+                margin-bottom: 0.5rem;
                 cursor: pointer;
             }
             .sidebar-toggle-icon {
@@ -143,7 +146,7 @@
                 display: block;
             }
             .sidebar-text {
-                display: none;
+                display: block;
             }
             .sidebar-links {
                 overflow-y: auto;
@@ -160,6 +163,24 @@
                 justify-content: center;
                 align-items: center;
                 width: 32px;
+            }
+            .sidebar.collapsed .sidebar-header {
+                justify-content: center;
+            }
+            .sidebar.collapsed .sidebar-header h1 {
+                display: none;
+            }
+            .sidebar.collapsed .sidebar-header .material-symbols-outlined {
+                margin-right: 0;
+            }
+            .sidebar.collapsed {
+                width: 64px;
+            }
+            .sidebar.collapsed ~ .main-content {
+                margin-left: 64px;
+            }
+            .sidebar.collapsed .sidebar-text {
+                display: none;
             }
         }
     </style>
@@ -196,10 +217,10 @@
 
     <div class="page-container">
         <!-- Sidebar for larger screens -->
-        <aside class="sidebar hidden lg:flex" id="sidebar">
+        <aside class="sidebar hidden lg:flex sidebar-expanded" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-blue-600 text-3xl">school</span>
+                    <img src="https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png" alt="Python Logo" class="h-8 w-8">
                     <h1 class="text-2xl font-bold text-slate-900 sidebar-text">PyHome</h1>
                 </a>
             </div>
@@ -256,7 +277,7 @@
                 </nav>
             </div>
             <div class="mt-auto pt-4 border-t border-slate-300">
-                <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="false" aria-label="Toggle sidebar">
+                <button class="sidebar-toggle flex items-center justify-center w-full" id="sidebar-toggle" aria-expanded="true" aria-label="Toggle sidebar">
                     <span class="material-symbols-outlined text-slate-600 transition-transform duration-300">flip</span>
                 </button>
             </div>
@@ -489,15 +510,16 @@
         const sidebarLinks = document.querySelectorAll('.sidebar-link');
         const toggleIcon = sidebarToggle.querySelector('.material-symbols-outlined');
 
-        // Initial check for screen size
+        // Initial state
         if (window.innerWidth >= 1024) {
-            mainContent.style.marginLeft = '64px';
+            sidebar.classList.add('sidebar-expanded');
+            mainContent.style.marginLeft = '250px';
         }
 
         sidebarToggle.addEventListener('click', () => {
-            const isExpanded = sidebar.classList.toggle('sidebar-expanded');
+            const isCollapsed = sidebar.classList.toggle('collapsed');
             
-            if (isExpanded) {
+            if (!isCollapsed) {
                 mainContent.style.marginLeft = '250px';
                 toggleIcon.textContent = 'keyboard_tab_rtl';
             } else {
@@ -509,26 +531,31 @@
         // Optional: Keep the state consistent on window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth < 1024) {
+                sidebar.classList.remove('collapsed');
                 sidebar.classList.remove('sidebar-expanded');
                 mainContent.style.marginLeft = '0';
             } else {
-                if (!sidebar.classList.contains('sidebar-expanded')) {
+                if (sidebar.classList.contains('collapsed')) {
                     mainContent.style.marginLeft = '64px';
+                } else {
+                    mainContent.style.marginLeft = '250px';
                 }
             }
         });
 
         sidebarLinks.forEach(link => {
             link.addEventListener('mouseenter', () => {
-                const icon = link.querySelector('.sidebar-icon');
-                if (icon) {
+                const icon = link.querySelector('.material-symbols-outlined');
+                const isSelected = link.classList.contains('text-blue-600');
+                if (icon && !isSelected) {
                     icon.style.color = '#2563eb';
                 }
             });
 
             link.addEventListener('mouseleave', () => {
-                const icon = link.querySelector('.sidebar-icon');
-                if (icon) {
+                const icon = link.querySelector('.material-symbols-outlined');
+                const isSelected = link.classList.contains('text-blue-600');
+                if (icon && !isSelected) {
                     icon.style.color = ''; // Revert to default
                 }
             });
