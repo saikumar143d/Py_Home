@@ -13,8 +13,8 @@
         body { font-family: 'Inter', sans-serif; }
         .code-block {
             background-color: #1a1a1a;
-            color: #f0f0f0;
-            padding: 1rem;
+            color: #e0e0e0;
+            padding: 1.5rem;
             border-radius: 0.75rem;
             font-family: 'Fira Code', 'JetBrains Mono', monospace;
             overflow-x: auto;
@@ -91,22 +91,6 @@
                 align-items: center;
                 z-index: 20;
             }
-            .sidebar-link {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                padding: 0.75rem 0.5rem;
-                border-radius: 0.5rem;
-                transition: background-color 0.2s, color 0.2s;
-                white-space: nowrap;
-                overflow: hidden;
-                width: 100%;
-                justify-content: flex-start;
-            }
-            .sidebar-link:hover {
-                background-color: #e5e5e5;
-                color: #2563eb;
-            }
             .sidebar:hover {
                 width: 250px;
             }
@@ -129,6 +113,56 @@
                 padding-bottom: 1rem;
                 border-bottom: 1px solid #e5e7eb;
                 margin-bottom: 1rem;
+            }
+            .sidebar-toggle {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 1rem;
+                cursor: pointer;
+            }
+            .sidebar-toggle-icon {
+                font-size: 2rem;
+                color: #4b5563;
+                transition: transform 0.3s ease-in-out;
+            }
+            .sidebar-expanded .sidebar-toggle-icon {
+                transform: rotate(180deg);
+            }
+            .sidebar-expanded {
+                width: 250px;
+            }
+            .sidebar-expanded ~ .main-content {
+                margin-left: 250px;
+            }
+            .sidebar-expanded .sidebar-text {
+                display: block;
+            }
+            .sidebar-link {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.75rem 0.5rem;
+                border-radius: 0.5rem;
+                transition: background-color 0.2s, color 0.2s;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .sidebar-link:hover {
+                background-color: #e5e5e5;
+                color: #2563eb;
+            }
+            .sidebar-links {
+                overflow-y: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                flex-grow: 1;
+                width: 100%;
+            }
+            .sidebar-links::-webkit-scrollbar {
+                display: none;
             }
         }
     </style>
@@ -160,71 +194,76 @@
                 <a href="files-reading.html">Files Reading and Cleaning Data</a>
                 <a href="combined-practice.html">Combined Practice</a>
             </div>
-        </div>
+            </div>
     </header>
 
     <div class="page-container">
         <!-- Sidebar for larger screens -->
-        <aside class="sidebar hidden lg:flex">
+        <aside class="sidebar hidden lg:flex" id="sidebar">
             <div class="sidebar-header">
                 <a href="index.html" class="flex items-center gap-2">
                     <span class="material-icons text-blue-600 text-3xl">school</span>
                     <h1 class="text-2xl font-bold text-slate-900 sidebar-text">Introduction</h1>
                 </a>
             </div>
-            <nav class="space-y-2">
-                <a href="introduction.html" class="sidebar-link font-semibold text-blue-600">
-                    <span class="material-icons">school</span>
-                    <span class="sidebar-text">Introduction</span>
-                </a>
-                <a href="programming-language.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">code</span>
-                    <span class="sidebar-text">Programming Language</span>
-                </a>
-                <a href="variables.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">data_object</span>
-                    <span class="sidebar-text">Variables</span>
-                </a>
-                <a href="conditional-statements.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">call_split</span>
-                    <span class="sidebar-text">Conditional Statements</span>
-                </a>
-                <a href="looping.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">autorenew</span>
-                    <span class="sidebar-text">Looping</span>
-                </a>
-                <a href="lists-arrays.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">list</span>
-                    <span class="sidebar-text">Lists or Arrays</span>
-                </a>
-                <a href="tuples.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">widgets</span>
-                    <span class="sidebar-text">Tuples</span>
-                </a>
-                <a href="sets-dictionaries.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">dns</span>
-                    <span class="sidebar-text">Sets and Dictionaries</span>
-                </a>
-                <a href="numpy.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">calculate</span>
-                    <span class="sidebar-text">NumPy Introduction</span>
-                </a>
-                <a href="pandas.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">grid_on</span>
-                    <span class="sidebar-text">Pandas Introduction</span>
-                </a>
-                <a href="files-reading.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">description</span>
-                    <span class="sidebar-text">Files Reading</span>
-                </a>
-                <a href="combined-practice.html" class="sidebar-link text-slate-700 hover:text-blue-600">
-                    <span class="material-icons">extension</span>
-                    <span class="sidebar-text">Combined Practice</span>
-                </a>
-            </nav>
+            <div class="sidebar-links">
+                <nav class="space-y-2">
+                    <a href="introduction.html" class="sidebar-link font-semibold text-blue-600">
+                        <span class="material-icons">school</span>
+                        <span class="sidebar-text">Introduction</span>
+                    </a>
+                    <a href="programming-language.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">code</span>
+                        <span class="sidebar-text">Programming Language</span>
+                    </a>
+                    <a href="variables.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">data_object</span>
+                        <span class="sidebar-text">Variables</span>
+                    </a>
+                    <a href="conditional-statements.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">call_split</span>
+                        <span class="sidebar-text">Conditional Statements</span>
+                    </a>
+                    <a href="looping.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">autorenew</span>
+                        <span class="sidebar-text">Looping</span>
+                    </a>
+                    <a href="lists-arrays.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">list</span>
+                        <span class="sidebar-text">Lists or Arrays</span>
+                    </a>
+                    <a href="tuples.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">widgets</span>
+                        <span class="sidebar-text">Tuples</span>
+                    </a>
+                    <a href="sets-dictionaries.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">dns</span>
+                        <span class="sidebar-text">Sets and Dictionaries</span>
+                    </a>
+                    <a href="numpy.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">calculate</span>
+                        <span class="sidebar-text">NumPy Introduction</span>
+                    </a>
+                    <a href="pandas.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">grid_on</span>
+                        <span class="sidebar-text">Pandas Introduction</span>
+                    </a>
+                    <a href="files-reading.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">description</span>
+                        <span class="sidebar-text">Files Reading</span>
+                    </a>
+                    <a href="combined-practice.html" class="sidebar-link text-slate-700 hover:text-blue-600">
+                        <span class="material-icons">extension</span>
+                        <span class="sidebar-text">Combined Practice</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-toggle" id="sidebar-toggle">
+                <span class="material-icons sidebar-toggle-icon">chevron_left</span>
+            </div>
         </aside>
 
-        <main class="main-content p-4 sm:p-8">
+        <main class="main-content p-4 sm:p-8" id="main-content">
             <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Programming Fundamentals in Python</h2>
             
             <!-- Introduction Card -->
@@ -263,7 +302,7 @@
                     <pre><code><span class="code-keyword">def</span> <span class="code-function">make_tea</span><span class="code-brackets">(</span><span class="code-variable">water</span><span class="code-operator">,</span> <span class="code-variable">tea_leaves</span><span class="code-operator">,</span> <span class="code-variable">milk</span><span class="code-operator">,</span> <span class="code-variable">sugar</span><span class="code-brackets">)</span><span class="code-operator">:</span>
     <span class="code-keyword">return</span> <span class="code-function">f</span><span class="code-string">"Tea ready with <span class="code-brackets">{</span><span class="code-variable">water</span><span class="code-brackets">}</span>ml water, <span class="code-brackets">{</span><span class="code-variable">tea_leaves</span><span class="code-brackets">}</span> spoons of tea, <span class="code-brackets">{</span><span class="code-variable">milk</span><span class="code-brackets">}</span>ml milk, and <span class="code-brackets">{</span><span class="code-variable">sugar</span><span class="code-brackets">}</span> spoons of sugar."</span>
 <span class="code-function">print</span><span class="code-brackets">(</span><span class="code-function">make_tea</span><span class="code-brackets">(</span><span class="code-number">200</span><span class="code-operator">,</span> <span class="code-number">2</span><span class="code-operator">,</span> <span class="code-number">50</span><span class="code-operator">,</span> <span class="code-number">1</span><span class="code-brackets">)</span><span class="code-brackets">)</code></pre>
-                    <p class="font-semibold mt-2 text-slate-400">Output:</p>
+                    <p class="font-semibold mt-2 text-slate-600">Output:</p>
                     <p class="font-mono text-xs sm:text-sm text-slate-500">Tea ready with 200ml water, 2 spoons of tea, 50ml milk, and 1 spoons of sugar.</p>
                 </div>
                 <p class="text-slate-600 mt-2 sm:mt-4 text-sm sm:text-base">Just like customizing a recipe, in programming, you pass inputs (parameters) to functions to change the result.</p>
@@ -443,6 +482,20 @@
         const menuDropdown = document.getElementById('menu-dropdown');
         menuButton.addEventListener('click', () => {
             menuDropdown.classList.toggle('show');
+        });
+
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const mainContent = document.getElementById('main-content');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-expanded');
+            sidebarToggle.classList.toggle('sidebar-expanded');
+            if (sidebar.classList.contains('sidebar-expanded')) {
+                mainContent.style.marginLeft = '250px';
+            } else {
+                mainContent.style.marginLeft = '64px';
+            }
         });
     </script>
 </body>
